@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset='utf-8' />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.1/angular.min.js" type="application/javascript"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- Custom styles for this template -->
+        <link href="css/grayscale.css" rel="stylesheet">
+    </head>
+    <body background="img/intro-bg.jpg">
+        <nav class="navbar navbar-default fixed-top" id="mainNav">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class = "navbar-brand" href="index.html">Lab 2</a>
+                </div>
+            </div>
+        </nav>
+        <div id="intro-body" class="row">
+            <div id="loginMes" class="content col-md-4 col-md-offset-5">
+                <p>Please login using your Google account:</p>
+
+                <!--Add buttons to initiate auth sequence and sign out-->
+                <button id="authorize-button" class="btn-default" style="display: none;">Authorize</button>
+                <button id="signout-button" class="btn-default" style="display: none;">Sign Out</button>
+            </div>
+            <div id="advMes" class="content col-md-4 col-md-offset-5" style="display: none">
+                <p id="greeting"></p>
+                <a href="home.html">Home</a>
+            </div>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+        var GoogleAuth;
+        // Enter an API key from the Google API Console:
+        //   https://console.developers.google.com/apis/credentials
+        var apiKey = 'AIzaSyAoiW1dzAYG6HYjZKcMdJZZiPXSHsEyo0Q';
+        // Enter a client ID for a web application from the Google API Console:
+        //   https://console.developers.google.com/apis/credentials?project=_
+        // In your API Console project, add a JavaScript origin that corresponds
+        //   to the domain where you will be running the script.
+        var clientId = '737850332038-q9s26k2c7f69p7tlipgll7r060b5tqua.apps.googleusercontent.com';
+        // Enter one or more authorization scopes. Refer to the documentation for
+        // the API or https://developers.google.com/people/v1/how-tos/authorizing
+        // for details.
+        var scopes = 'profile';
+        var authorizeButton = document.getElementById('authorize-button');
+        var signoutButton = document.getElementById('signout-button');
+        var advMes = document.getElementById("advMes");
+        var greeting = document.getElementById("greeting")
+        function handleClientLoad() {
+            // Load the API client and auth2 library
+            gapi.load('client:auth2', initClient);
+        }
+        function initClient() {
+            gapi.client.init({
+                apiKey: apiKey,
+                clientId: clientId,
+                scope: scopes
+            }).then(function () {
+                GoogleAuth = gapi.auth2.getAuthInstance();
+                // Listen for sign-in state changes.
+                gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+                // Handle the initial sign-in state.
+                updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+                authorizeButton.onclick = handleAuthClick;
+                signoutButton.onclick = handleSignoutClick;
+            });
+        }
+        function updateSigninStatus(isSignedIn) {
+            if (isSignedIn) {
+                authorizeButton.style.display = 'none';
+                signoutButton.style.display = 'block';
+                makeApiCall();
+            } else {
+                authorizeButton.style.display = 'block';
+                signoutButton.style.display = 'none';
+            }
+        }
+        function handleAuthClick(event) {
+            gapi.auth2.getAuthInstance().signIn();
+        }
+        function handleSignoutClick(event) {
+            gapi.auth2.getAuthInstance().signOut();
+            advMes.style.display = 'none';
+        }
+        // Load the API and make an API call.  Display the results on the screen.
+        function makeApiCall() {
+            var user = GoogleAuth.currentUser.get();
+            var name = user.w3.ig;
+            var email = user.w3.U3;
+            localStorage.setItem("name", name);
+            localStorage.setItem("email", email);
+            greeting.innerHTML = 'Hello, '+ name +', you can now navigate to the Home page!';
+            advMes.style.display = 'block';
+        }
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js"
+            onload="this.onload=function(){};handleClientLoad()"
+            onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+</html>
