@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Lab3</string>
+    <string name="signed_in_fmt">Signed In</string>
+    <string name="signed_out">Signed out</string>
+    <string name="twitter_consumer_key">xojgn2eSRSnmo9CTdq1A1La5T</string>
+    <string name="twitter_consumer_secret">xs6SgWz13hX4vTTSn8C6Nizo9N2vdOZBvf0T0cnzJTyTKQdLfX</string>
+    <string name="title_activity_register">Register</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Register</string>
+    <string name="action_sign_in_short">Register</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+</resources>

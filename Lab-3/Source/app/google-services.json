@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "509619132199",
+    "firebase_url": "https://lab3-95c12.firebaseio.com",
+    "project_id": "lab3-95c12",
+    "storage_bucket": "lab3-95c12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509619132199:android:61154892c00797fd",
+        "android_client_info": {
+          "package_name": "com.umkc.team11.lab3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509619132199-r8l7da5up68212mg1s5mrg3qjdbukahe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.umkc.team11.lab3",
+            "certificate_hash": "dd2e8aebfdb839a6ea684d432997ffeb3257c686"
+          }
+        },
+        {
+          "client_id": "509619132199-f5aqpfbaanma1jqg5108ingq8h80mf6d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLAExhqC8ZHGU_-H1jWq-kZvozjoJbpZY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509619132199-f5aqpfbaanma1jqg5108ingq8h80mf6d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
