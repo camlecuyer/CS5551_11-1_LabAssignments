@@ -1,0 +1,47 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="center">
+        <h3>Search:</h3>
+        <div>
+            <label>Search Term:</label><br>
+            <ion-input type="text" id="txt_search" [(ngModel)]="searchTermIn"></ion-input>
+        </div>
+        <div class="row">
+            <div class="col col-60">
+                <input type="button" id="btn_search" value="Search" (click)="search()"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="listItem">
+            <h2>Languages:</h2>
+            <ion-item *ngFor="let lang of searchLang, let i=index">
+                {{lang.language}}
+                {{lang.confidence}}
+            </ion-item>
+        </div>
+        
+        <div class="listItem">
+            <h2>Searches:</h2>
+            <ion-item *ngFor="let search of searches">
+            {{search.result.name}}
+        </ion-item>
+        </div>
+        
+    </div>
+
+</ion-content>

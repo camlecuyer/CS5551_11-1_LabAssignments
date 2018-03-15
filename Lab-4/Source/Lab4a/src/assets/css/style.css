@@ -1,0 +1,21 @@
+/* Empty. Add your own CSS if you like */
+.center {
+    margin-left: auto;
+    width: 200px;
+    margin-right: auto;
+    display: block;
+    padding: 5px;
+}
+
+.center input[type=text], input[type=password]{
+    padding: 2px;
+    border: 1px solid black;
+    margin: 2px;
+}
+
+.listItem {
+    padding: 2px;
+    width: 150px;
+    margin-right: auto;
+    margin-left: auto;
+}
